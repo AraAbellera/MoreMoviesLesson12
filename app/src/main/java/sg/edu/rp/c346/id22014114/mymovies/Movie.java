@@ -33,9 +33,7 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public String getGenre() {
-        return genre;
-    }
+    public String getGenre() { return genre; }
 
     public void setMovieGenre(String genre) {
         this.genre = genre;
@@ -55,37 +53,17 @@ public class Movie implements Serializable {
         this.rating = rating;
     }
 
-    @Override
-    public String toString()
-    {
-        String ratingST = "";
-        if(rating == "G")
-        {
-            ratingST = "G";
-        }
-        else if(rating == "PG")
-        {
-            ratingST = "PG";
-        }
-        else if(rating == "PG13")
-        {
-            ratingST = "PG13";
-        }
-        else if(rating == "NC16")
-        {
-            ratingST = "NC16";
-        }
-        else if(rating == "M18")
-        {
-            ratingST = "M18";
-        }
-        else if(rating == "R21")
-        {
-            ratingST = "R21";
-        }
-
-        return ratingST;
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "Movie{" +
+//                "id=" + id +
+//                ", title='" + title + '\'' +
+//                ", genre='" + genre + '\'' +
+//                ", year=" + year +
+//                ", rating='" + rating + '\'' +
+//                '}';
+//    }
 
 }
 

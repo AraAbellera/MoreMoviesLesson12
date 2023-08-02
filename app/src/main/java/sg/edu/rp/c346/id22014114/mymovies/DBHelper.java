@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VER = 1;
     private static final String DATABASE_NAME = "movies.db";
-    private static final String TABLE_TASK = "Movie";
+    private static final String TABLE_MOVIE = "Movie";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_TITLE = "title";
     private static final String COLUMN_GENRE = "genre";
@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableSql = "CREATE TABLE " + TABLE_TASK + "("
+        String createTableSql = "CREATE TABLE " + TABLE_MOVIE + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TITLE + " TEXT,"
                 + COLUMN_GENRE + " TEXT,"
@@ -52,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_YEAR, year);
         values.put(COLUMN_RATING, rating);
 
-        long result = db.insert(TABLE_TASK, null, values);
+        long result = db.insert(TABLE_MOVIE, null, values);
         db.close();
         Log.d("SQL Insert", "ID:" + result);
         return result;
@@ -63,7 +63,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Movie> Movie = new ArrayList<Movie>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_GENRE, COLUMN_YEAR, COLUMN_RATING};
-        Cursor cursor = db.query(TABLE_TASK, columns, null, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_MOVIE, columns, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -87,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_GENRE, COLUMN_YEAR, COLUMN_RATING};
         String condition = COLUMN_RATING + " Like ?";
         String[] args = {"%" + keyword + "%"};
-        Cursor cursor = db.query(TABLE_TASK, columns, condition, args,
+        Cursor cursor = db.query(TABLE_MOVIE, columns, condition, args,
                 null, null, null, null);
 
         if (cursor.moveToFirst()) {
@@ -106,16 +106,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return Movie;
     }
 
-    public int updateMovie(Movie title, Movie genre, Movie year, Movie rating){
+    public int updateMovie(Movie data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TITLE, title.getTitle());
-        values.put(COLUMN_GENRE, genre.getGenre());
-        values.put(COLUMN_YEAR, year.getYear());
-        values.put(COLUMN_RATING, rating.getRating());
+        values.put(COLUMN_TITLE, data.getTitle());
+        values.put(COLUMN_GENRE, data.getGenre());
+        values.put(COLUMN_YEAR, data.getYear());
+        values.put(COLUMN_RATING, data.getRating());
         String condition = COLUMN_ID + "= ?";
-        String[] args = {String.valueOf(title.getId())};
-        int result = db.update(TABLE_TASK, values, condition, args);
+        String[] args = {String.valueOf(data.getId())};
+        int result = db.update(TABLE_MOVIE, values, condition, args);
         db.close();
         return result;
     }
@@ -124,7 +124,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
-        int result = db.delete(TABLE_TASK, condition, args);
+        int result = db.delete(TABLE_MOVIE, condition, args);
         db.close();
         return result;
     }
@@ -133,7 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
-        int result = db.delete(TABLE_TASK, condition, args);
+        int result = db.delete(TABLE_MOVIE, condition, args);
         db.close();
         return result;
     }

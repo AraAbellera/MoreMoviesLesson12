@@ -40,27 +40,27 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvTitle = rowView.findViewById(R.id.tvTitle);
         TextView tvGenre = rowView.findViewById(R.id.tvGenre);
         TextView tvYear = rowView.findViewById(R.id.tvYear);
-        ImageView ivRating = rowView.findViewById(R.id.iv);
+        ImageView ivRating = rowView.findViewById(R.id.ivm);
 
         // Obtain the Android Version information based on the position
         Movie currentItem = movieList.get(position);
 
         // Set values to the TextView to display the corresponding information
-        tvTitle.setText(currentItem.getTitle());
+        tvTitle.setText(currentItem.getTitle() + "");
         tvGenre.setText(currentItem.getGenre());
-        tvYear.setText(String.valueOf(currentItem.getYear()));
+        tvYear.setText(String.valueOf(currentItem.getYear()) + currentItem.getRating());
 
-        if (currentItem.getRating() == "G") {
+        if (currentItem.getRating().equals("G")) {
             ivRating.setImageResource(R.drawable.g);
-        } else if (currentItem.getRating() == "PG"){
+        } else if (currentItem.getRating().equals("PG")){
             ivRating.setImageResource(R.drawable.pg);
-        } else if (currentItem.getRating() == "PG13"){
+        } else if (currentItem.getRating().equals("PG13")){
             ivRating.setImageResource(R.drawable.pg13);
-        } else if (currentItem.getRating() == "NC16"){
+        } else if (currentItem.getRating().equals("NC16")){
             ivRating.setImageResource(R.drawable.nc16);
-        } else if (currentItem.getRating() == "M18"){
+        } else if (currentItem.getRating().equals("M18")){
             ivRating.setImageResource(R.drawable.m18);
-        } else if (currentItem.getRating() == "R21"){
+        } else if (currentItem.getRating().equals("R21")){
             ivRating.setImageResource(R.drawable.r21);
         }
 

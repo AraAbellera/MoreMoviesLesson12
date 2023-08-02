@@ -48,11 +48,7 @@ public class DisplayMovie extends AppCompatActivity {
                 Movie data = al.get(position);
                 Intent i = new Intent(DisplayMovie.this,
                         UpdateMovie.class);
-                i.putExtra("ID", data);
-                i.putExtra("Title", data);
-                i.putExtra("Genre", data);
-                i.putExtra("Year", data);
-                i.putExtra("Rating", data);
+                i.putExtra("data", data);
                 startActivity(i);
             }
         });
@@ -67,14 +63,10 @@ public class DisplayMovie extends AppCompatActivity {
         btnpg13.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                // Create the DBHelper object, passing in the
-                // activity's Context
-//                Intent i = new Intent(DisplaySong.this, EditSong.class);
-//                startActivity(i);
                 DBHelper dbh = new DBHelper(DisplayMovie.this);
                 al.clear();
                 String filterText = "PG13";
-                al.addAll(dbh.getAllMovies(String.valueOf(filterText.length())));
+                al.addAll(dbh.getAllMovies(filterText));
                 adapter.notifyDataSetChanged();
 
             }
