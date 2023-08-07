@@ -1,7 +1,9 @@
 package sg.edu.rp.c346.id22014114.mymovies;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,13 +45,6 @@ public class UpdateMovie extends AppCompatActivity {
         title.setText(String.valueOf(data.getTitle()));
         genre.setText(String.valueOf(data.getGenre()));
         year.setText(String.valueOf(data.getYear()));
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
 
         rating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -103,10 +98,52 @@ public class UpdateMovie extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper db = new DBHelper(UpdateMovie.this);
-                db.deleteMovie(data.getId());
-                finish();
+
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(UpdateMovie.this);
+
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to delete the movie\n" + " '" + String.valueOf(data.getTitle()) + "' " );
+
+                myBuilder.setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        DBHelper db = new DBHelper(UpdateMovie.this);
+                        db.deleteMovie(data.getId());
+                        finish();
+
+                    }
+                });
+
+                myBuilder.setPositiveButton("CANCEL", null);
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
             }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(UpdateMovie.this);
+
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to discard the changes");
+
+                myBuilder.setNegativeButton("DISCARD", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        onBackPressed();
+
+                    }
+                });
+
+                myBuilder.setPositiveButton("DO NOT DISCARD", null);
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+            }
+
         });
 
     }

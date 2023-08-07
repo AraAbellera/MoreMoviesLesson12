@@ -8,8 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DisplayMovie extends AppCompatActivity {
 
@@ -18,10 +22,19 @@ public class DisplayMovie extends AppCompatActivity {
     Button btnpg13,back;
     ArrayList<Movie> al;
     CustomAdapter adapter;
+//    TextView created;
 
     @Override
     protected void onResume() {
         super.onResume();
+
+//        created = findViewById(R.id.tvCreated);
+//
+//        Calendar calender = Calendar.getInstance();
+//        created.setText("Last Updated: " + calender.get(Calendar.DATE) + "/" + calender.get(Calendar.MONTH) + "/" + calender.get(Calendar.YEAR) + " at "
+//        + calender.get(Calendar.HOUR) + ":" + calender.get(Calendar.MINUTE));
+
+
         al = new ArrayList<Movie>();
         adapter = new CustomAdapter(this, R.layout.row, al);
         lv.setAdapter(adapter);
@@ -40,6 +53,7 @@ public class DisplayMovie extends AppCompatActivity {
         lv = findViewById(R.id.lvDisplay);
         btnpg13 = findViewById(R.id.btnpg13);
         back = findViewById(R.id.btnback);
+
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
