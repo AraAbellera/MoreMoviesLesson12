@@ -84,14 +84,37 @@ public class UpdateMovie extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbh = new DBHelper(UpdateMovie.this);
-                data.setMovieTitle(title.getText().toString());
-                data.setMovieGenre(genre.getText().toString());
-                data.setMovieYear(Integer.valueOf(year.getText().toString()));
-                data.setMovieRating(stRating);
-                dbh.updateMovie(data);
-                dbh.close();
-                finish();
+
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(UpdateMovie.this);
+
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to update the movie\n" + " '" + String.valueOf(data.getTitle()) + "' \n\n"
+                + "The following changes will be made: \n"
+                + "Title: " + String.valueOf(data.getTitle()) + " > " + title.getText().toString() + " \n"
+                + "Genre: " + String.valueOf(data.getGenre()) + " > " + genre.getText().toString() + " \n"
+                + "Year: " + String.valueOf(data.getYear()) + " > " + year.getText().toString() + " \n"
+                + "Rating: " + String.valueOf(data.getRating()) + " > " + stRating + " \n");
+
+                myBuilder.setNegativeButton("UPDATE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        DBHelper dbh = new DBHelper(UpdateMovie.this);
+                        data.setMovieTitle(title.getText().toString());
+                        data.setMovieGenre(genre.getText().toString());
+                        data.setMovieYear(Integer.valueOf(year.getText().toString()));
+                        data.setMovieRating(stRating);
+                        dbh.updateMovie(data);
+                        dbh.close();
+                        finish();
+
+                    }
+                });
+
+                myBuilder.setPositiveButton("CANCEL", null);
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+
             }
         });
 
