@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp">
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:fontFamily="@font/gothic_a1_extrabold"
         android:text="@string/movie_title"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
     <EditText
@@ -26,8 +27,10 @@
         android:ems="10"
         android:hint="@string/enter_movie_title_here"
         android:inputType="text"
-        android:textColorHint="#000000"
-        android:textColor="#000000"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif"
         android:textSize="18sp"
         android:layout_marginTop="5dp"/>
@@ -37,10 +40,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/genree"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:textSize="20sp"
         android:fontFamily="@font/gothic_a1_extrabold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/genre"
@@ -50,8 +55,10 @@
         android:fontFamily="sans-serif"
         android:hint="@string/enter_movie_genre_here"
         android:inputType="text"
-        android:textColorHint="#000000"
-        android:textColor="#000000"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:textSize="18sp"
         android:layout_marginTop="5dp"/>
 
@@ -60,21 +67,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/yearr"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:textSize="20sp"
         android:fontFamily="@font/gothic_a1_extrabold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:ems="10"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif"
         android:hint="@string/enter_year_of_movie_release_here"
         android:inputType="text"
-        android:textColorHint="#000000"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         android:layout_marginTop="5dp"/>
 
@@ -84,23 +95,28 @@
         android:layout_height="wrap_content"
         android:text="@string/rating"
         android:fontFamily="@font/gothic_a1_extrabold"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"/>
 
     <Spinner
         android:id="@+id/rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/spinnerItems"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#FFFFFF"
+        android:entries="@array/spinnerItems" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp">
 
         <Button
             android:id="@+id/btnInsert"
@@ -108,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="#7602B5"
+            android:background="#B50226"
             android:fontFamily="@font/gothic_a1_extrabold"
             android:text="@string/insert"
             android:textColor="#FFFFFF" />
@@ -118,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#7602B5"
+            android:background="#B50226"
             android:fontFamily="@font/gothic_a1_extrabold"
             android:text="@string/show_list"
             android:textColor="#FFFFFF" />

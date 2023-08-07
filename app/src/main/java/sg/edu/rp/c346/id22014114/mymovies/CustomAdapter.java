@@ -48,7 +48,7 @@ public class CustomAdapter extends ArrayAdapter {
         // Set values to the TextView to display the corresponding information
         tvTitle.setText(currentItem.getTitle() + "");
         tvGenre.setText(currentItem.getGenre());
-        tvYear.setText(String.valueOf(currentItem.getYear()) + currentItem.getRating());
+        tvYear.setText(String.valueOf(currentItem.getYear()));
 
         if (currentItem.getRating().equals("G")) {
             ivRating.setImageResource(R.drawable.g);

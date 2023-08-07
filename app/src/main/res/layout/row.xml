@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#7602B5" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvGenre"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/genre"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#9843C6" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvYear"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/year"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="#A067BF" />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <ImageView
